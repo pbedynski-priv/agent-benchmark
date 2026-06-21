@@ -1,0 +1,78 @@
+name: New Benchmark Task
+description: Propose a new benchmark task for the library
+title: "[Task]: "
+labels: ["task", "enhancement"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Suggest a new benchmark task to add to the library.
+        
+  - type: input
+    id: task-id
+    attributes:
+      label: Task ID
+      description: Proposed ID (kebab-case, e.g., `rate-limiter`)
+      placeholder: rate-limiter
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - algorithms
+        - data-structures
+        - debugging
+        - hermes-tool-use
+        - hermes-instruction
+        - hermes-memory
+        - hermes-planning
+        - hermes-error-recovery
+        - hermes-code-review
+        - new category (specify below)
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty
+      options:
+        - easy
+        - medium
+        - hard
+    validations:
+      required: true
+      
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Task Prompt
+      description: The prompt that will be sent to models.
+      placeholder: |
+        Implement a rate limiter using the token bucket algorithm.
+        
+        Requirements:
+        - ...
+    validations:
+      required: true
+      
+  - type: textarea
+    id: expected-output
+    attributes:
+      label: Expected Output
+      description: What the model should produce.
+      placeholder: Description of correct implementation.
+      
+  - type: textarea
+    id: evaluation
+    attributes:
+      label: Evaluation Criteria
+      description: How should the reviewer score this task?
+      placeholder: |
+        - Correctness: Does the implementation work?
+        - Efficiency: Time/space complexity?
+        - Completeness: All requirements met?
