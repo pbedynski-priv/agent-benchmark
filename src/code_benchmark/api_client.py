@@ -138,7 +138,14 @@ class APIClient:
             raise APIClientError("Client not initialized. Use async context manager.")
 
         # Determine endpoint and format based on model
-        anthropic_models = {"qwen3.7-plus", "qwen3.7-max", "qwen3.6-plus", "minimax-m3", "minimax-m2.7", "minimax-m2.5"}
+        anthropic_models = {
+            "qwen3.7-plus",
+            "qwen3.7-max",
+            "qwen3.6-plus",
+            "minimax-m3",
+            "minimax-m2.7",
+            "minimax-m2.5",
+        }
         use_anthropic = model in anthropic_models or model.startswith("minimax-")
 
         if use_anthropic:
@@ -152,7 +159,9 @@ class APIClient:
 
         return await self._request_with_retry(payload, endpoint, headers)
 
-    def _build_openai_payload(self, model: str, prompt: str, system: str | None, temperature: float, max_tokens: int) -> dict:
+    def _build_openai_payload(
+        self, model: str, prompt: str, system: str | None, temperature: float, max_tokens: int
+    ) -> dict:
         """Build OpenAI-style chat completions payload."""
         messages = []
         if system:
@@ -166,7 +175,9 @@ class APIClient:
             "max_tokens": max_tokens,
         }
 
-    def _build_anthropic_payload(self, model: str, prompt: str, system: str | None, temperature: float, max_tokens: int) -> dict:
+    def _build_anthropic_payload(
+        self, model: str, prompt: str, system: str | None, temperature: float, max_tokens: int
+    ) -> dict:
         """Build Anthropic-style messages payload."""
         messages = [{"role": "user", "content": prompt}]
 
@@ -181,7 +192,9 @@ class APIClient:
 
         return payload
 
-    async def _request_with_retry(self, payload: dict[str, Any], endpoint: str, headers: dict[str, str]) -> str:
+    async def _request_with_retry(
+        self, payload: dict[str, Any], endpoint: str, headers: dict[str, str]
+    ) -> str:
         """Execute request with retry logic and exponential backoff.
 
         Args:
@@ -206,9 +219,7 @@ class APIClient:
 
                 if response.status_code == 429:
                     retry_after = int(response.headers.get("Retry-After", 60))
-                    raise RateLimitError(
-                        f"Rate limited. Retry after {retry_after}s"
-                    )
+                    raise RateLimitError(f"Rate limited. Retry after {retry_after}s")
 
                 if response.status_code >= 500:
                     raise APIError(
@@ -228,7 +239,7 @@ class APIClient:
             except RateLimitError as e:
                 last_error = e
                 if attempt < max_retries:
-                    wait_time = min(60 * (2 ** attempt), 300)
+                    wait_time = min(60 * (2**attempt), 300)
                     await asyncio.sleep(wait_time)
                 continue
 
@@ -237,27 +248,25 @@ class APIClient:
                 if e.status_code and e.status_code < 500:
                     raise  # Don't retry client errors
                 if attempt < max_retries:
-                    wait_time = min(2 ** attempt, 30)
+                    wait_time = min(2**attempt, 30)
                     await asyncio.sleep(wait_time)
                 continue
 
             except httpx.TimeoutException as e:
                 last_error = e
                 if attempt < max_retries:
-                    wait_time = min(2 ** attempt, 30)
+                    wait_time = min(2**attempt, 30)
                     await asyncio.sleep(wait_time)
                 continue
 
             except httpx.HTTPError as e:
                 last_error = e
                 if attempt < max_retries:
-                    wait_time = min(2 ** attempt, 30)
+                    wait_time = min(2**attempt, 30)
                     await asyncio.sleep(wait_time)
                 continue
 
-        raise APIClientError(
-            f"Request failed after {max_retries + 1} attempts: {last_error}"
-        )
+        raise APIClientError(f"Request failed after {max_retries + 1} attempts: {last_error}")
 
     def _extract_response(self, data: dict[str, Any]) -> str:
         """Extract response text from API response.
@@ -280,7 +289,9 @@ class APIClient:
             if reasoning:
                 # This is a problem - model spent all tokens on reasoning
                 # Return empty to trigger error handling
-                raise APIError("Model spent all tokens on reasoning, no actual response generated. Increase max_tokens.")
+                raise APIError(
+                    "Model spent all tokens on reasoning, no actual response generated. Increase max_tokens."
+                )
 
         # Try Anthropic format: {"content": [{"type": "text", "text": "..."}]}
         content_list = data.get("content", [])

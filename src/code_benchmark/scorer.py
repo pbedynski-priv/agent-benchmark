@@ -25,8 +25,7 @@ class Scorer:
         total = sum(self.weights.values())
         if abs(total - 1.0) > 0.001:
             raise ValueError(
-                f"Scoring weights must sum to 1.0, got {total:.4f}. "
-                f"Weights: {self.weights}"
+                f"Scoring weights must sum to 1.0, got {total:.4f}. Weights: {self.weights}"
             )
 
     def calculate_scores(self, review_result: Any) -> dict[str, float]:
@@ -70,9 +69,7 @@ class Scorer:
         """
         return scores.get(dimension, 0.0)
 
-    def rank_models(
-        self, results: list[dict[str, Any]]
-    ) -> list[dict[str, Any]]:
+    def rank_models(self, results: list[dict[str, Any]]) -> list[dict[str, Any]]:
         """Rank models by their total scores.
 
         Args:
@@ -93,9 +90,7 @@ class Scorer:
 
         return scored
 
-    def get_summary_stats(
-        self, results: list[dict[str, Any]]
-    ) -> dict[str, Any]:
+    def get_summary_stats(self, results: list[dict[str, Any]]) -> dict[str, Any]:
         """Calculate summary statistics across results.
 
         Args:
@@ -107,18 +102,12 @@ class Scorer:
         if not results:
             return {"count": 0}
 
-        totals = [
-            self.calculate_total(r.get("scores", {}))
-            for r in results
-        ]
+        totals = [self.calculate_total(r.get("scores", {})) for r in results]
 
         # Per-dimension averages
         dimension_avgs = {}
         for dim in self.weights:
-            dim_scores = [
-                r.get("scores", {}).get(dim, 0.0)
-                for r in results
-            ]
+            dim_scores = [r.get("scores", {}).get(dim, 0.0) for r in results]
             if dim_scores:
                 dimension_avgs[dim] = round(sum(dim_scores) / len(dim_scores), 4)
 

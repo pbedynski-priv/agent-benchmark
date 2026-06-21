@@ -31,11 +31,11 @@ class APIConfig:
         # Fallback: read from Hermes .env file
         hermes_env = Path.home() / "AppData" / "Local" / "hermes" / ".env"
         if hermes_env.exists():
-            with open(hermes_env, 'r') as f:
+            with open(hermes_env, "r") as f:
                 for line in f:
                     line = line.strip()
-                    if line.startswith(f'{self.api_key_env}=') and not line.startswith('#'):
-                        return line.split('=', 1)[1]
+                    if line.startswith(f"{self.api_key_env}=") and not line.startswith("#"):
+                        return line.split("=", 1)[1]
 
         return key  # Return whatever we got from env (might be empty/short)
 
@@ -49,11 +49,13 @@ class APIConfig:
 class ModelsConfig:
     """Model configuration settings."""
 
-    candidates: list[str] = field(default_factory=lambda: [
-        "qwen3.7-plus",
-        "deepseek-v4-flash",
-        "kimi-k2.6",
-    ])
+    candidates: list[str] = field(
+        default_factory=lambda: [
+            "qwen3.7-plus",
+            "deepseek-v4-flash",
+            "kimi-k2.6",
+        ]
+    )
     reviewer: str = "deepseek-v4-pro"
 
 
@@ -72,16 +74,18 @@ class ExecutionConfig:
 class ScoringConfig:
     """Scoring weights configuration."""
 
-    weights: dict[str, float] = field(default_factory=lambda: {
-        "correctness": 0.30,
-        "efficiency": 0.20,
-        "completeness": 0.15,
-        "style": 0.10,
-        "error_handling": 0.10,
-        "documentation": 0.05,
-        "innovation": 0.05,
-        "security": 0.05,
-    })
+    weights: dict[str, float] = field(
+        default_factory=lambda: {
+            "correctness": 0.30,
+            "efficiency": 0.20,
+            "completeness": 0.15,
+            "style": 0.10,
+            "error_handling": 0.10,
+            "documentation": 0.05,
+            "innovation": 0.05,
+            "security": 0.05,
+        }
+    )
 
     def validate(self) -> None:
         """Validate that weights sum to 1.0."""

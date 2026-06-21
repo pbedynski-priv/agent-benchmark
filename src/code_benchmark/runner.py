@@ -166,10 +166,8 @@ Return ONLY the code, no explanations outside of code comments."""
                 model_tasks = []
                 for model in models:
                     for task in tasks:
-                        model_tasks.append(
-                            self._execute_task(client, reviewer, model, task)
-                        )
-                
+                        model_tasks.append(self._execute_task(client, reviewer, model, task))
+
                 # Execute all tasks concurrently with progress tracking
                 results = []
                 for coro in asyncio.as_completed(model_tasks):

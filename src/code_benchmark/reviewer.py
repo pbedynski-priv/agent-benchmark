@@ -52,6 +52,7 @@ Code:
 Score 0-10 on these 4 dimensions. Reply ONLY with JSON:
 {{"scores": {{"correctness": N, "efficiency": N, "completeness": N, "style": N}}, "feedback": "brief"}}
 """
+
     def __init__(self, config: Config, client: APIClient):
         """Initialize the reviewer.
 

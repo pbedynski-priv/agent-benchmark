@@ -138,9 +138,7 @@ def report(
 
 @app.command()
 def compare(
-    run_ids: str = typer.Argument(
-        ..., help="Comma-separated run IDs to compare"
-    ),
+    run_ids: str = typer.Argument(..., help="Comma-separated run IDs to compare"),
     format: str = typer.Option(
         "table",
         "--format",

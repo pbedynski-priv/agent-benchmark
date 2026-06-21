@@ -229,15 +229,10 @@ class Reporter:
                 total = self.scorer.calculate_total(result.get("scores", {}))
                 model_scores.setdefault(model, []).append(total)
 
-            model_avgs = {
-                m: sum(scores) / len(scores)
-                for m, scores in model_scores.items()
-            }
+            model_avgs = {m: sum(scores) / len(scores) for m, scores in model_scores.items()}
             best_model = max(model_avgs, key=model_avgs.get) if model_avgs else "N/A"
             overall_avg = (
-                sum(sum(s) for s in model_scores.values()) / len(results)
-                if results
-                else 0
+                sum(sum(s) for s in model_scores.values()) / len(results) if results else 0
             )
 
             table.add_row(
@@ -262,15 +257,16 @@ class Reporter:
                 model_scores.setdefault(model, []).append(total)
 
             model_avgs = {
-                m: round(sum(scores) / len(scores), 4)
-                for m, scores in model_scores.items()
+                m: round(sum(scores) / len(scores), 4) for m, scores in model_scores.items()
             }
 
-            comparison.append({
-                "run_id": run_data["run_id"],
-                "models": run_data["models"],
-                "model_averages": model_avgs,
-            })
+            comparison.append(
+                {
+                    "run_id": run_data["run_id"],
+                    "models": run_data["models"],
+                    "model_averages": model_avgs,
+                }
+            )
 
         console.print_json(json.dumps(comparison, indent=2))
 
@@ -291,15 +287,10 @@ class Reporter:
                 total = self.scorer.calculate_total(result.get("scores", {}))
                 model_scores.setdefault(model, []).append(total)
 
-            model_avgs = {
-                m: sum(scores) / len(scores)
-                for m, scores in model_scores.items()
-            }
+            model_avgs = {m: sum(scores) / len(scores) for m, scores in model_scores.items()}
             best_model = max(model_avgs, key=model_avgs.get) if model_avgs else "N/A"
             overall_avg = (
-                sum(sum(s) for s in model_scores.values()) / len(results)
-                if results
-                else 0
+                sum(sum(s) for s in model_scores.values()) / len(results) if results else 0
             )
 
             lines.append(
