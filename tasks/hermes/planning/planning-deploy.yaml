@@ -1,0 +1,19 @@
+id: planning-deploy
+difficulty: medium
+description: Plan deployment strategy
+prompt: Plan deploying a Python web app to AWS with auto-scaling
+expected_steps:
+- choose services
+- setup infrastructure
+- configure CI/CD
+- setup monitoring
+- test scaling
+- deploy
+test_cases:
+- input: Deploy plan
+  expected: service.*infrastructure.*CI.*monitor.*scale.*deploy
+  description: Deployment strategy
+tags:
+- planning
+- deployment
+category: hermes-planning

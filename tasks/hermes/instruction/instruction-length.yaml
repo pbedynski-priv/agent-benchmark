@@ -1,0 +1,16 @@
+id: instruction-length
+difficulty: medium
+description: Respect length constraints
+prompt: Write a Python function that calculates fibonacci numbers. Maximum 50 lines
+  of code.
+constraints:
+  max_lines: 50
+test_cases:
+- input: Line limit
+  expected: def.*fibonacci
+  max_lines: 50
+  description: Concise implementation
+tags:
+- constraint
+- length
+category: hermes-instruction

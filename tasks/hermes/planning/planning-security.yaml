@@ -1,0 +1,19 @@
+id: planning-security
+difficulty: hard
+description: Plan security audit
+prompt: Plan a security audit for a web application handling sensitive user data
+expected_steps:
+- identify assets
+- threat modeling
+- code review
+- penetration testing
+- compliance check
+- remediation plan
+test_cases:
+- input: Security plan
+  expected: asset.*threat.*review.*penetration.*compliance.*remediation
+  description: Security audit
+tags:
+- planning
+- security
+category: hermes-planning

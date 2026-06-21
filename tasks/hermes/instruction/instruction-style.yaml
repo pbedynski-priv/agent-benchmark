@@ -1,0 +1,19 @@
+id: instruction-style
+difficulty: medium
+description: Follow style requirements
+prompt: Write a Python class with 3 methods. All methods must have type hints and
+  docstrings.
+constraints:
+  require_type_hints: true
+  require_docstrings: true
+test_cases:
+- input: Type hints required
+  expected: def.*\(.*:.*\).*->
+  description: Type hints present
+- input: Docstrings required
+  expected: '""".*"""'
+  description: Docstrings present
+tags:
+- constraint
+- style
+category: hermes-instruction

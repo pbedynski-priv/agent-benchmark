@@ -1,0 +1,20 @@
+id: memory-update
+difficulty: medium
+description: Update memory entry
+prompt: 'Current memory: ''User prefers dark mode''
+
+  New info: ''User now prefers light mode''
+
+  Update the memory'
+context: 'Current: User prefers dark mode
+
+  New: User now prefers light mode'
+expected_output: User prefers light mode
+test_cases:
+- input: Memory update
+  expected: light mode
+  description: Update preference
+tags:
+- update
+- memory
+category: hermes-memory

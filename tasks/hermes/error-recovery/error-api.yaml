@@ -1,0 +1,14 @@
+id: error-api
+difficulty: hard
+description: Handle API failures
+prompt: API call failed with 503 Service Unavailable after 3 retries. How do you proceed?
+scenario: HTTP 503 after 3 retries
+expected_output: Implement exponential backoff, check service status, use fallback
+test_cases:
+- input: API failure
+  expected: backoff|fallback|status|circuit.*breaker
+  description: API recovery
+tags:
+- error
+- api
+category: hermes-error-recovery

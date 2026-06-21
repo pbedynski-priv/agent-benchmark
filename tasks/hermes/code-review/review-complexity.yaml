@@ -1,0 +1,21 @@
+id: review-complexity
+difficulty: hard
+description: Check code complexity
+prompt: "Analyze complexity:\ndef process_data(data):\n    result = []\n    for i\
+  \ in range(len(data)):\n        for j in range(len(data)):\n            if data[i]\
+  \ == data[j]:\n                result.append((i, j))\n    return result"
+code: "def process_data(data):\n    result = []\n    for i in range(len(data)):\n\
+  \        for j in range(len(data)):\n            if data[i] == data[j]:\n      \
+  \          result.append((i, j))\n    return result"
+expected_issues:
+- "O(n\xB2) time complexity"
+- Nested loops
+- Could be optimized with hash map
+test_cases:
+- input: Complexity analysis
+  expected: O\(n.*2\)|nested|complexity|optimize
+  description: Complexity issues
+tags:
+- review
+- complexity
+category: hermes-code-review

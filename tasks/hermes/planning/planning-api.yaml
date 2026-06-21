@@ -1,0 +1,18 @@
+id: planning-api
+difficulty: medium
+description: Plan REST API design
+prompt: Design a REST API for a blog platform with posts, comments, and users
+expected_steps:
+- define resources
+- design endpoints
+- specify request/response
+- add authentication
+- document API
+test_cases:
+- input: API design
+  expected: resource.*endpoint.*request.*auth.*document
+  description: API design
+tags:
+- planning
+- api
+category: hermes-planning

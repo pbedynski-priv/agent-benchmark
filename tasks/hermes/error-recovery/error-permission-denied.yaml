@@ -1,0 +1,15 @@
+id: error-permission-denied
+difficulty: medium
+description: Handle permission errors
+prompt: 'Command failed: ''Permission denied'' when trying to write to /etc/hosts.
+  How do you proceed?'
+scenario: 'Permission denied: /etc/hosts'
+expected_output: Use sudo or run as administrator
+test_cases:
+- input: Permission error
+  expected: sudo|administrator|root
+  description: Permission fix
+tags:
+- error
+- permission
+category: hermes-error-recovery

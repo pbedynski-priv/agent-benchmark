@@ -1,0 +1,113 @@
+id: priority-queue
+category: data-structures
+difficulty: medium
+description: "Implement a priority queue (min-heap) from scratch"
+
+prompt: |
+  Implement a priority queue using a binary min-heap from scratch in Python.
+  Do not use heapq or any built-in priority queue.
+
+  Requirements:
+  - Implement using an internal array representing a complete binary tree
+  - Support insert, extract_min, peek operations
+  - Maintain heap property after every operation
+  - O(log n) for insert and extract_min, O(1) for peek
+  - Support decrease_key operation for updating priorities
+  - Handle duplicate priorities correctly
+
+  Implement the following class:
+  ```python
+  class PriorityQueue:
+      def __init__(self):
+          pass
+
+      def insert(self, item: any, priority: float) -> None:
+          """Insert an item with given priority."""
+          pass
+
+      def extract_min(self) -> tuple[any, float]:
+          """Remove and return (item, priority) with lowest priority value."""
+          pass
+
+      def peek(self) -> tuple[any, float]:
+          """Return (item, priority) with lowest priority without removing."""
+          pass
+
+      def is_empty(self) -> bool:
+          """Check if queue is empty."""
+          pass
+
+      def __len__(self) -> int:
+          """Return number of items."""
+          pass
+
+      def decrease_key(self, item: any, new_priority: float) -> None:
+          """Decrease the priority of an existing item."""
+          pass
+  ```
+
+expected_output: |
+  The priority queue should correctly maintain the min-heap property.
+  extract_min should always return the item with the lowest priority value.
+  decrease_key should bubble up the updated item to maintain heap order.
+
+test_cases:
+  - input: |
+      pq = PriorityQueue()
+      pq.insert("task_a", 3)
+      pq.insert("task_b", 1)
+      pq.insert("task_c", 2)
+      result = pq.extract_min()
+    expected_output: "('task_b', 1)"
+    description: "Extract minimum priority"
+
+  - input: |
+      pq = PriorityQueue()
+      pq.insert("a", 5)
+      pq.insert("b", 3)
+      pq.insert("c", 7)
+      pq.insert("d", 1)
+      result1 = pq.extract_min()
+      result2 = pq.extract_min()
+    expected_output: "('d', 1), ('b', 3)"
+    description: "Multiple extractions in order"
+
+  - input: |
+      pq = PriorityQueue()
+      pq.insert("a", 5)
+      pq.insert("b", 3)
+      result = pq.peek()
+    expected_output: "('b', 3) - not removed"
+    description: "Peek without removal"
+
+  - input: |
+      pq = PriorityQueue()
+      pq.insert("a", 5)
+      pq.insert("b", 3)
+      pq.decrease_key("a", 1)
+      result = pq.extract_min()
+    expected_output: "('a', 1)"
+    description: "Decrease key and extract"
+
+  - input: |
+      pq = PriorityQueue()
+      result = pq.is_empty()
+      pq.insert("x", 1)
+      result2 = pq.is_empty()
+    expected_output: "True, False"
+    description: "Empty check"
+
+  - input: |
+      pq = PriorityQueue()
+      pq.insert("a", 3)
+      pq.insert("b", 3)
+      pq.insert("c", 3)
+      results = [pq.extract_min() for _ in range(3)]
+    expected_output: "All three items extracted (order may vary for equal priorities)"
+    description: "Duplicate priorities"
+
+tags:
+  - heap
+  - data-structure
+  - priority-queue
+  - binary-tree

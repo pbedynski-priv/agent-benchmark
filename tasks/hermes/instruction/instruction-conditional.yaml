@@ -1,0 +1,19 @@
+id: instruction-conditional
+difficulty: medium
+description: Follow conditional logic
+prompt: If the user is on Windows, use PowerShell. If on Linux, use bash. If on macOS,
+  use zsh.
+test_cases:
+- input: Windows
+  expected: PowerShell
+  description: Windows branch
+- input: Linux
+  expected: bash
+  description: Linux branch
+- input: macOS
+  expected: zsh
+  description: macOS branch
+tags:
+- conditional
+- logic
+category: hermes-instruction

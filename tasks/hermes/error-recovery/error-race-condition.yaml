@@ -1,0 +1,16 @@
+id: error-race-condition
+difficulty: hard
+description: Fix concurrency bugs
+prompt: "Fix this race condition:\ncounter = 0\ndef increment():\n    global counter\n\
+  \    counter += 1"
+scenario: Race condition in concurrent counter
+code: "counter = 0\ndef increment():\n    global counter\n    counter += 1"
+expected_output: Use threading.Lock or atomic operations
+test_cases:
+- input: Race fix
+  expected: Lock|atomic|mutex|synchronize
+  description: Fix race condition
+tags:
+- error
+- concurrency
+category: hermes-error-recovery

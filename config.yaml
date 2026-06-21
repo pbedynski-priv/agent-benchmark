@@ -1,0 +1,26 @@
+api:
+  base_url: https://opencode.ai/zen/go/v1
+  api_key_env: OPENCODE_GO_API_KEY
+  timeout: 120
+  max_retries: 3
+
+models:
+  candidates:
+    - qwen3.7-plus
+    - deepseek-v4-flash
+    - kimi-k2.6
+  reviewer: deepseek-v4-pro
+
+execution:
+  docker_image: python:3.11-slim
+  cpu_limit: 1.0
+  memory_limit: 512M
+  timeout: 30
+  network: false
+
+scoring:
+  weights:
+    correctness: 0.40
+    efficiency: 0.25
+    completeness: 0.20
+    style: 0.15

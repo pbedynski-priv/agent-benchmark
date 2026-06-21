@@ -1,0 +1,17 @@
+id: error-deadlock
+difficulty: hard
+description: Fix deadlock situations
+prompt: "Fix this deadlock:\nlock1 = Lock()\nlock2 = Lock()\ndef thread1():\n    lock1.acquire()\n\
+  \    lock2.acquire()\ndef thread2():\n    lock2.acquire()\n    lock1.acquire()"
+scenario: Deadlock between two threads
+code: "lock1 = Lock()\nlock2 = Lock()\ndef thread1():\n    lock1.acquire()\n    lock2.acquire()\n\
+  def thread2():\n    lock2.acquire()\n    lock1.acquire()"
+expected_output: Always acquire locks in same order or use timeout
+test_cases:
+- input: Deadlock fix
+  expected: order|timeout|tryLock|consistent
+  description: Fix deadlock
+tags:
+- error
+- deadlock
+category: hermes-error-recovery

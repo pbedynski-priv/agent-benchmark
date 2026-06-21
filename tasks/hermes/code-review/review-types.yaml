@@ -1,0 +1,17 @@
+id: review-types
+difficulty: easy
+description: Check type hints
+prompt: "Check type hints:\ndef greet(name, greeting):\n    return f\"{greeting},\
+  \ {name}!\""
+code: "def greet(name, greeting):\n    return f\"{greeting}, {name}!\""
+expected_issues:
+- Missing type hints for parameters
+- Missing return type
+test_cases:
+- input: Type hint check
+  expected: type.*hint|:.*str|->.*str
+  description: Type hint issues
+tags:
+- review
+- types
+category: hermes-code-review

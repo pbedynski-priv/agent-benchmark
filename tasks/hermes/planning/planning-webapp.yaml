@@ -1,0 +1,20 @@
+id: planning-webapp
+difficulty: hard
+description: Plan web application
+prompt: Create a detailed plan to build a todo web application with user authentication
+expected_steps:
+- setup project
+- database design
+- backend API
+- frontend UI
+- authentication
+- testing
+- deployment
+test_cases:
+- input: Web app plan
+  expected: project.*database.*API.*UI.*auth.*test.*deploy
+  description: Complete plan
+tags:
+- planning
+- webapp
+category: hermes-planning

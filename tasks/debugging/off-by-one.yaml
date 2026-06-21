@@ -1,0 +1,57 @@
+id: off-by-one
+category: debugging
+difficulty: easy
+description: "Find and fix an off-by-one error in array processing"
+
+prompt: |
+  The following Python function has an off-by-one bug. Find and fix it.
+
+  ```python
+  def find_median(sorted_arr: list[int]) -> float:
+      """Find the median of a sorted array."""
+      n = len(sorted_arr)
+      if n == 0:
+          raise ValueError("Empty array")
+      mid = n // 2
+      if n % 2 == 0:
+          return (sorted_arr[mid] + sorted_arr[mid - 1]) / 2
+      else:
+          return sorted_arr[mid + 1]  # BUG IS HERE
+  ```
+
+  Requirements:
+  1. Identify the bug
+  2. Explain why it occurs
+  3. Provide the corrected code
+  4. The fix should handle all edge cases (empty array, single element, even/odd length)
+
+expected_output: |
+  The bug is on the line `return sorted_arr[mid + 1]` in the odd-length case.
+  For an odd-length array, the median is at index `mid` (n // 2), not `mid + 1`.
+  The correct line should be `return sorted_arr[mid]`.
+
+test_cases:
+  - input: "find_median([1, 3, 5])"
+    expected_output: "3"
+    description: "Odd length array - median is middle element"
+
+  - input: "find_median([1, 2, 3, 4])"
+    expected_output: "2.5"
+    description: "Even length array - average of two middle elements"
+
+  - input: "find_median([42])"
+    expected_output: "42"
+    description: "Single element"
+
+  - input: "find_median([1, 2])"
+    expected_output: "1.5"
+    description: "Two elements"
+
+  - input: "find_median([1, 2, 3, 4, 5, 6, 7])"
+    expected_output: "4"
+    description: "Larger odd array"
+
+tags:
+  - debugging
+  - arrays
+  - boundary-conditions

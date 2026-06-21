@@ -1,0 +1,14 @@
+id: tool-terminal-basic
+difficulty: easy
+description: Generate basic terminal command
+prompt: List all Python files in the current directory
+expected_tool: terminal
+expected_output: find . -name '*.py' -type f
+test_cases:
+- input: List Python files
+  expected: find . -name '*.py'
+  description: Basic file search
+tags:
+- terminal
+- file-search
+category: hermes-tool-use

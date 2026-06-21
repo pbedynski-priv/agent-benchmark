@@ -1,0 +1,13 @@
+id: instruction-markdown-format
+difficulty: easy
+description: Output valid markdown
+prompt: Create a markdown document with a title, 2 sections, and a code block
+expected_format: markdown
+test_cases:
+- input: Markdown structure
+  expected: '#.*##.*```'
+  description: Valid markdown
+tags:
+- format
+- markdown
+category: hermes-instruction

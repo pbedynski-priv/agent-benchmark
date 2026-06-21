@@ -1,0 +1,14 @@
+id: memory-format
+difficulty: easy
+description: Format for MEMORY.md
+prompt: 'Format this fact for MEMORY.md: ''User uses Python 3.11 on Windows 10 with
+  WSL2'''
+expected_format: memory_md
+test_cases:
+- input: Memory format
+  expected: Python.*Windows.*WSL2
+  description: Proper formatting
+tags:
+- format
+- memory
+category: hermes-memory

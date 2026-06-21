@@ -1,0 +1,14 @@
+id: tool-api-get
+difficulty: medium
+description: Make GET request
+prompt: Fetch data from https://api.example.com/users
+expected_tool: terminal
+expected_output: curl https://api.example.com/users
+test_cases:
+- input: GET request
+  expected: curl.*api.example.com/users
+  description: API GET
+tags:
+- api
+- get
+category: hermes-tool-use

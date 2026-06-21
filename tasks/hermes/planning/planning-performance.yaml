@@ -1,0 +1,19 @@
+id: planning-performance
+difficulty: hard
+description: Plan performance optimization
+prompt: Plan optimizing a slow Python application that processes large datasets
+expected_steps:
+- profile code
+- identify bottlenecks
+- optimize algorithms
+- add caching
+- parallelize
+- monitor improvements
+test_cases:
+- input: Performance plan
+  expected: profile.*bottleneck.*optimize.*cache.*parallel.*monitor
+  description: Optimization strategy
+tags:
+- planning
+- performance
+category: hermes-planning

@@ -1,0 +1,19 @@
+id: review-docs
+difficulty: easy
+description: Check documentation
+prompt: "Check documentation:\ndef calculate_compound_interest(principal, rate, time,\
+  \ n=12):\n    return principal * (1 + rate/n) ** (n*time)"
+code: "def calculate_compound_interest(principal, rate, time, n=12):\n    return principal\
+  \ * (1 + rate/n) ** (n*time)"
+expected_issues:
+- Missing docstring
+- No parameter descriptions
+- No return type
+test_cases:
+- input: Documentation check
+  expected: docstring|document|comment|description
+  description: Documentation issues
+tags:
+- review
+- documentation
+category: hermes-code-review

@@ -1,0 +1,67 @@
+id: merge-sort
+category: algorithms
+difficulty: medium
+description: "Implement merge sort with stability guarantee"
+
+prompt: |
+  Implement the merge sort algorithm in Python.
+
+  Requirements:
+  - Sort a list of elements using the merge sort algorithm
+  - The sort must be stable (equal elements maintain their relative order)
+  - Time complexity must be O(n log n) in all cases
+  - Space complexity should be O(n)
+  - Implement both the sort function and a function that sorts by a custom key
+  - Handle edge cases: empty list, single element, already sorted, reverse sorted
+
+  Implement the following:
+  ```python
+  def merge_sort(arr: list) -> list:
+      """Sort a list using merge sort. Returns a new sorted list."""
+      pass
+
+  def merge_sort_by(arr: list, key: callable, reverse: bool = False) -> list:
+      """Sort a list by a custom key function. Must be stable."""
+      pass
+  ```
+
+expected_output: |
+  merge_sort should return a new sorted list using the divide-and-conquer
+  approach. merge_sort_by should support custom sorting keys and maintain
+  stability (elements with equal keys keep their original order).
+
+test_cases:
+  - input: "merge_sort([38, 27, 43, 3, 9, 82, 10])"
+    expected_output: "[3, 9, 10, 27, 38, 43, 82]"
+    description: "Basic unsorted list"
+
+  - input: "merge_sort([])"
+    expected_output: "[]"
+    description: "Empty list"
+
+  - input: "merge_sort([1])"
+    expected_output: "[1]"
+    description: "Single element"
+
+  - input: "merge_sort([1, 2, 3, 4, 5])"
+    expected_output: "[1, 2, 3, 4, 5]"
+    description: "Already sorted"
+
+  - input: "merge_sort([5, 4, 3, 2, 1])"
+    expected_output: "[1, 2, 3, 4, 5]"
+    description: "Reverse sorted"
+
+  - input: "merge_sort([3, 1, 4, 1, 5, 9, 2, 6, 5])"
+    expected_output: "[1, 1, 2, 3, 4, 5, 5, 6, 9]"
+    description: "List with duplicates"
+
+  - input: |
+      items = [('alice', 30), ('bob', 25), ('charlie', 30), ('dave', 25)]
+      result = merge_sort_by(items, key=lambda x: x[1])
+    expected_output: "[('bob', 25), ('dave', 25), ('alice', 30), ('charlie', 30)]"
+    description: "Stable sort by key"
+
+tags:
+  - sorting
+  - divide-and-conquer
+  - stable-sort

@@ -1,0 +1,20 @@
+id: planning-feature
+difficulty: medium
+description: Plan feature implementation
+prompt: Plan implementing a search feature for an e-commerce site with filters and
+  sorting
+expected_steps:
+- define requirements
+- design API
+- implement backend
+- create UI
+- add filters
+- test performance
+test_cases:
+- input: Feature plan
+  expected: requirement.*API.*backend.*UI.*filter.*test
+  description: Feature implementation
+tags:
+- planning
+- feature
+category: hermes-planning

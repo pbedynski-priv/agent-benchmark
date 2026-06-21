@@ -1,0 +1,19 @@
+id: planning-migration
+difficulty: hard
+description: Plan database migration
+prompt: Plan migrating from MySQL to PostgreSQL with zero downtime
+expected_steps:
+- analyze schema
+- create migration scripts
+- setup dual-write
+- validate data
+- switch read traffic
+- decommission MySQL
+test_cases:
+- input: Migration plan
+  expected: schema.*migration.*dual.*validate.*switch.*decommission
+  description: Migration strategy
+tags:
+- planning
+- migration
+category: hermes-planning

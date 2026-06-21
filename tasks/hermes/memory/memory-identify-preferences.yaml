@@ -1,0 +1,27 @@
+id: memory-identify-preferences
+difficulty: medium
+description: Identify user preferences
+prompt: 'What are the user''s coding preferences?
+
+  User: I like black for formatting
+
+  User: Always use f-strings
+
+  User: Prefer async/await over threads'
+context: 'User: I like black for formatting
+
+  User: Always use f-strings
+
+  User: Prefer async/await over threads'
+expected_output:
+- black formatter
+- f-strings
+- async/await
+test_cases:
+- input: Preference extraction
+  expected: black.*f-string.*async
+  description: Coding preferences
+tags:
+- extraction
+- preferences
+category: hermes-memory

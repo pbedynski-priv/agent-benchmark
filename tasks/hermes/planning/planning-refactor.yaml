@@ -1,0 +1,19 @@
+id: planning-refactor
+difficulty: hard
+description: Plan code refactoring
+prompt: Plan how to refactor a 5000-line monolithic Python file into modular components
+expected_steps:
+- analyze dependencies
+- identify modules
+- create interfaces
+- extract functions
+- write tests
+- migrate gradually
+test_cases:
+- input: Refactor plan
+  expected: analyze.*module.*interface.*extract.*test.*migrate
+  description: Refactoring strategy
+tags:
+- planning
+- refactoring
+category: hermes-planning

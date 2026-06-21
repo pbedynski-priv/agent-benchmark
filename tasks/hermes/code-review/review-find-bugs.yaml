@@ -1,0 +1,17 @@
+id: review-find-bugs
+difficulty: medium
+description: Identify logic errors
+prompt: "Find bugs in this code:\ndef average(numbers):\n    total = 0\n    for n\
+  \ in numbers:\n        total += n\n    return total / len(numbers)"
+code: "def average(numbers):\n    total = 0\n    for n in numbers:\n        total\
+  \ += n\n    return total / len(numbers)"
+expected_issues:
+- Division by zero if list is empty
+test_cases:
+- input: Bug detection
+  expected: zero|empty|division|len.*0
+  description: Find logic bug
+tags:
+- review
+- bugs
+category: hermes-code-review

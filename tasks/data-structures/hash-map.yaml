@@ -1,0 +1,101 @@
+id: hash-map
+category: data-structures
+difficulty: medium
+description: "Implement a hash map from scratch with collision handling"
+
+prompt: |
+  Implement a hash map (dictionary) from scratch in Python without using
+  the built-in dict type for storage.
+
+  Requirements:
+  - Implement using an internal array of buckets
+  - Handle collisions using chaining (linked lists at each bucket)
+  - Support dynamic resizing when load factor exceeds threshold
+  - Average O(1) time for get, put, and delete operations
+  - Implement proper hashing for string and integer keys
+
+  Implement the following class:
+  ```python
+  class HashMap:
+      def __init__(self, initial_capacity: int = 16, load_factor_threshold: float = 0.75):
+          pass
+
+      def put(self, key, value) -> None:
+          """Insert or update a key-value pair."""
+          pass
+
+      def get(self, key, default=None):
+          """Get value by key, return default if not found."""
+          pass
+
+      def delete(self, key) -> bool:
+          """Remove a key-value pair. Return True if key existed."""
+          pass
+
+      def __contains__(self, key) -> bool:
+          """Check if key exists."""
+          pass
+
+      def __len__(self) -> int:
+          """Return number of entries."""
+          pass
+
+      def keys(self) -> list:
+          """Return all keys."""
+          pass
+
+      def values(self) -> list:
+          """Return all values."""
+          pass
+  ```
+
+expected_output: |
+  The hash map should correctly store and retrieve key-value pairs,
+  handle collisions via chaining, and resize when the load factor
+  exceeds the threshold. All operations should be O(1) amortized.
+
+test_cases:
+  - input: |
+      hm = HashMap()
+      hm.put("name", "Alice")
+      hm.put("age", 30)
+      result = hm.get("name")
+    expected_output: "'Alice'"
+    description: "Basic put and get"
+
+  - input: |
+      hm = HashMap()
+      hm.put("key", "value1")
+      hm.put("key", "value2")
+      result = hm.get("key")
+    expected_output: "'value2' (updated value)"
+    description: "Update existing key"
+
+  - input: |
+      hm = HashMap()
+      hm.put("a", 1)
+      hm.put("b", 2)
+      result = hm.delete("a")
+      contains_a = "a" in hm
+    expected_output: "True, False"
+    description: "Delete operation"
+
+  - input: |
+      hm = HashMap(initial_capacity=4, load_factor_threshold=0.5)
+      for i in range(10):
+          hm.put(f"key_{i}", i)
+      result = len(hm)
+    expected_output: "10 (resized correctly)"
+    description: "Dynamic resizing"
+
+  - input: |
+      hm = HashMap()
+      result = hm.get("nonexistent", "default_value")
+    expected_output: "'default_value'"
+    description: "Get with default for missing key"
+
+tags:
+  - hash-table
+  - data-structure
+  - collision-handling
+  - dynamic-resizing

@@ -1,0 +1,84 @@
+id: dijkstra
+category: algorithms
+difficulty: hard
+description: "Implement Dijkstra's shortest path algorithm"
+
+prompt: |
+  Implement Dijkstra's shortest path algorithm in Python.
+
+  Requirements:
+  - Find the shortest path from a source node to all other nodes in a weighted graph
+  - The graph is represented as an adjacency list with weights
+  - Handle disconnected nodes (return infinity for unreachable nodes)
+  - Return both distances and the actual shortest paths
+  - Use a priority queue (heapq) for efficiency
+  - Time complexity should be O((V + E) log V)
+
+  Implement the following:
+  ```python
+  import heapq
+
+  def dijkstra(graph: dict[str, list[tuple[str, float]]], source: str) -> tuple[dict[str, float], dict[str, list[str]]]:
+      """
+      Args:
+          graph: Adjacency list where graph[node] = [(neighbor, weight), ...]
+          source: Starting node
+
+      Returns:
+          Tuple of (distances dict, paths dict)
+          distances[node] = shortest distance from source
+          paths[node] = list of nodes in shortest path from source
+      """
+      pass
+  ```
+
+expected_output: |
+  The algorithm should correctly compute shortest distances from the source
+  to all reachable nodes, and reconstruct the actual paths. Unreachable
+  nodes should have distance infinity and empty paths.
+
+test_cases:
+  - input: |
+      graph = {
+          'A': [('B', 1), ('C', 4)],
+          'B': [('C', 2), ('D', 5)],
+          'C': [('D', 1)],
+          'D': []
+      }
+      distances, paths = dijkstra(graph, 'A')
+    expected_output: "distances: A=0, B=1, C=3, D=4; paths: A=[A], B=[A,B], C=[A,B,C], D=[A,B,C,D]"
+    description: "Simple 4-node graph"
+
+  - input: |
+      graph = {
+          'A': [('B', 1)],
+          'B': [],
+          'C': [('A', 1)]
+      }
+      distances, paths = dijkstra(graph, 'A')
+    expected_output: "distances: A=0, B=1, C=inf; path to C is empty"
+    description: "Disconnected node"
+
+  - input: |
+      graph = {
+          'A': [('B', 10), ('C', 3)],
+          'B': [('C', 1), ('D', 2)],
+          'C': [('B', 4), ('D', 8), ('E', 2)],
+          'D': [('E', 7)],
+          'E': [('D', 9)]
+      }
+      distances, paths = dijkstra(graph, 'A')
+    expected_output: "distances: A=0, B=7, C=3, D=9, E=5"
+    description: "Complex graph with multiple paths"
+
+  - input: |
+      graph = {'A': []}
+      distances, paths = dijkstra(graph, 'A')
+    expected_output: "distances: A=0, path: [A]"
+    description: "Single node graph"
+
+tags:
+  - graph
+  - shortest-path
+  - priority-queue
+  - greedy

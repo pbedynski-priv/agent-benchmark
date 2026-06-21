@@ -1,0 +1,78 @@
+id: lru-cache
+category: algorithms
+difficulty: medium
+description: "Implement a Least Recently Used (LRU) cache with O(1) operations"
+
+prompt: |
+  Implement an LRU (Least Recently Used) cache in Python.
+
+  Requirements:
+  - The cache should have a fixed capacity
+  - get(key) should return the value if the key exists, otherwise return -1
+  - put(key, value) should insert or update the value
+  - When the cache reaches capacity, evict the least recently used item
+  - Both get and put must run in O(1) average time complexity
+
+  Implement the LRUCache class with the following interface:
+  ```python
+  class LRUCache:
+      def __init__(self, capacity: int):
+          pass
+
+      def get(self, key: int) -> int:
+          pass
+
+      def put(self, key: int, value: int) -> None:
+          pass
+  ```
+
+expected_output: |
+  The LRU cache should correctly store and retrieve key-value pairs,
+  evicting the least recently used items when capacity is exceeded.
+  get() should update the recency of accessed items.
+
+test_cases:
+  - input: |
+      cache = LRUCache(2)
+      cache.put(1, 1)
+      cache.put(2, 2)
+      result = cache.get(1)
+    expected_output: "1"
+    description: "Basic get after put"
+
+  - input: |
+      cache = LRUCache(2)
+      cache.put(1, 1)
+      cache.put(2, 2)
+      cache.get(1)
+      cache.put(3, 3)  # Evicts key 2
+      result = cache.get(2)
+    expected_output: "-1"
+    description: "Eviction of least recently used"
+
+  - input: |
+      cache = LRUCache(2)
+      cache.put(1, 1)
+      cache.put(2, 2)
+      cache.get(1)
+      cache.put(3, 3)  # Evicts key 2
+      cache.get(3)
+      cache.put(4, 4)  # Evicts key 1
+      result1 = cache.get(1)
+      result2 = cache.get(3)
+      result3 = cache.get(4)
+    expected_output: "result1=-1, result2=3, result3=4"
+    description: "Multiple evictions"
+
+  - input: |
+      cache = LRUCache(1)
+      cache.put(1, 1)
+      cache.put(2, 2)
+      result = cache.get(1)
+    expected_output: "-1"
+    description: "Capacity 1 cache"
+
+tags:
+  - hash-map
+  - linked-list
+  - o1-operations

@@ -1,0 +1,24 @@
+id: memory-merge
+difficulty: hard
+description: Merge related memories
+prompt: 'Merge these memories:
+
+  1. ''User uses Python 3.11''
+
+  2. ''User is on Windows''
+
+  3. ''User uses VS Code'''
+context: 'Memory 1: Python 3.11
+
+  Memory 2: Windows
+
+  Memory 3: VS Code'
+expected_output: User uses Python 3.11 on Windows with VS Code
+test_cases:
+- input: Memory merge
+  expected: Python.*Windows.*VS Code
+  description: Combine memories
+tags:
+- merge
+- memory
+category: hermes-memory

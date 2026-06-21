@@ -1,0 +1,20 @@
+id: memory-prioritize
+difficulty: medium
+description: Prioritize facts by importance
+prompt: 'Rank these facts by importance for future sessions:
+
+  1. User''s favorite color is blue
+
+  2. User''s project uses PostgreSQL
+
+  3. User prefers dark mode'
+context: 'Facts: favorite color, PostgreSQL, dark mode'
+expected_output: PostgreSQL > dark mode > favorite color
+test_cases:
+- input: Prioritization
+  expected: PostgreSQL.*dark.*color
+  description: Rank importance
+tags:
+- prioritize
+- importance
+category: hermes-memory

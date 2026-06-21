@@ -1,0 +1,15 @@
+id: error-syntax
+difficulty: easy
+description: Fix syntax errors
+prompt: "Fix this Python syntax error:\ndef my_function(x\n    return x * 2"
+scenario: 'SyntaxError: invalid syntax'
+code: "def my_function(x\n    return x * 2"
+expected_output: "def my_function(x):\n    return x * 2"
+test_cases:
+- input: Syntax fix
+  expected: 'def my_function\(x\):'
+  description: Fix syntax
+tags:
+- error
+- syntax
+category: hermes-error-recovery

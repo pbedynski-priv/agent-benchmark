@@ -1,0 +1,29 @@
+# Task Registry for Code Benchmark
+# This file indexes all available benchmark tasks
+
+version: "1.0"
+
+categories:
+  algorithms:
+    description: "Classic algorithm implementation tasks"
+    tasks:
+      - lru-cache
+      - binary-search
+      - dijkstra
+      - merge-sort
+
+  debugging:
+    description: "Bug identification and fixing tasks"
+    tasks:
+      - off-by-one
+      - null-pointer
+      - race-condition
+      - memory-leak
+
+  data-structures:
+    description: "Data structure implementation tasks"
+    tasks:
+      - hash-map
+      - priority-queue
+
+total_tasks: 10

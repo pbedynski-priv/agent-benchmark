@@ -1,0 +1,14 @@
+id: tool-file-read
+difficulty: easy
+description: Read file content
+prompt: Read the contents of config.yaml
+expected_tool: read_file
+expected_output: read_file(path='config.yaml')
+test_cases:
+- input: Read config file
+  expected: read_file.*config.yaml
+  description: File read operation
+tags:
+- file
+- read
+category: hermes-tool-use

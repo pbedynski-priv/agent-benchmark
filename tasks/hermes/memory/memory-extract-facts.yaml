@@ -1,0 +1,28 @@
+id: memory-extract-facts
+difficulty: medium
+description: Extract facts from conversation
+prompt: 'Extract key facts from this conversation:
+
+  User: I''m using Python 3.11 on Windows 10
+
+  User: My project uses pytest
+
+  User: I prefer type hints'
+context: 'User: I''m using Python 3.11 on Windows 10
+
+  User: My project uses pytest
+
+  User: I prefer type hints'
+expected_output:
+- Python 3.11
+- Windows 10
+- pytest
+- type hints
+test_cases:
+- input: Extract environment
+  expected: Python.*3\.11.*Windows.*pytest
+  description: Fact extraction
+tags:
+- extraction
+- facts
+category: hermes-memory

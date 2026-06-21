@@ -1,0 +1,20 @@
+id: memory-validate
+difficulty: hard
+description: Check if memory is still valid
+prompt: 'Is this memory still valid?
+
+  Memory: ''User is using Python 3.9''
+
+  Recent conversation: User mentions Python 3.11 features'
+context: 'Memory: Python 3.9
+
+  Recent: Python 3.11 features'
+expected_output: Memory is outdated, should be Python 3.11
+test_cases:
+- input: Validation
+  expected: outdated|invalid|3\.11
+  description: Check validity
+tags:
+- validate
+- memory
+category: hermes-memory

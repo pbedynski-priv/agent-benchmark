@@ -1,0 +1,14 @@
+id: error-timeout
+difficulty: medium
+description: Handle timeout errors
+prompt: Database query timed out after 30 seconds. How do you proceed?
+scenario: 'Query timeout: 30s exceeded'
+expected_output: Optimize query, add indexes, increase timeout, or paginate results
+test_cases:
+- input: Timeout handling
+  expected: optimize|index|timeout|paginate
+  description: Timeout recovery
+tags:
+- error
+- timeout
+category: hermes-error-recovery

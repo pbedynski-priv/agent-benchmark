@@ -1,0 +1,17 @@
+id: review-security
+difficulty: hard
+description: Find security vulnerabilities
+prompt: "Find security issues:\ndef get_user(user_id):\n    query = f\"SELECT * FROM\
+  \ users WHERE id = {user_id}\"\n    return db.execute(query)"
+code: "def get_user(user_id):\n    query = f\"SELECT * FROM users WHERE id = {user_id}\"\
+  \n    return db.execute(query)"
+expected_issues:
+- SQL injection vulnerability
+test_cases:
+- input: Security review
+  expected: SQL.*injection|parameterized|sanitize
+  description: Find security issue
+tags:
+- review
+- security
+category: hermes-code-review

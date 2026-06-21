@@ -1,0 +1,19 @@
+id: planning-test
+difficulty: medium
+description: Plan testing strategy
+prompt: Plan a comprehensive testing strategy for a payment processing system
+expected_steps:
+- unit tests
+- integration tests
+- security tests
+- performance tests
+- edge cases
+- regression tests
+test_cases:
+- input: Test plan
+  expected: unit.*integration.*security.*performance.*edge.*regression
+  description: Testing strategy
+tags:
+- planning
+- testing
+category: hermes-planning

@@ -1,0 +1,81 @@
+version: '1.0'
+total_tasks: 60
+categories:
+- name: hermes-tool-use
+  count: 10
+  tasks:
+  - tool-terminal-basic
+  - tool-terminal-pipe
+  - tool-file-read
+  - tool-file-write
+  - tool-file-patch
+  - tool-browser-navigate
+  - tool-browser-click
+  - tool-browser-type
+  - tool-api-get
+  - tool-api-post
+- name: hermes-instruction
+  count: 10
+  tasks:
+  - instruction-multistep
+  - instruction-format-constraint
+  - instruction-conditional
+  - instruction-negative
+  - instruction-sequential
+  - instruction-json-format
+  - instruction-markdown-format
+  - instruction-length
+  - instruction-style
+  - instruction-priority
+- name: hermes-memory
+  count: 10
+  tasks:
+  - memory-extract-facts
+  - memory-extract-environment
+  - memory-summarize-long
+  - memory-identify-preferences
+  - memory-detect-contradictions
+  - memory-update
+  - memory-merge
+  - memory-prioritize
+  - memory-format
+  - memory-validate
+- name: hermes-planning
+  count: 10
+  tasks:
+  - planning-webapp
+  - planning-debug
+  - planning-refactor
+  - planning-feature
+  - planning-migration
+  - planning-deploy
+  - planning-test
+  - planning-api
+  - planning-security
+  - planning-performance
+- name: hermes-error-recovery
+  count: 10
+  tasks:
+  - error-command-not-found
+  - error-permission-denied
+  - error-syntax
+  - error-runtime
+  - error-api
+  - error-timeout
+  - error-infinite-loop
+  - error-memory-leak
+  - error-race-condition
+  - error-deadlock
+- name: hermes-code-review
+  count: 10
+  tasks:
+  - review-find-bugs
+  - review-security
+  - review-performance
+  - review-improvements
+  - review-style
+  - review-docs
+  - review-tests
+  - review-types
+  - review-complexity
+  - review-best-practices

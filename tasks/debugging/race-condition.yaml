@@ -1,0 +1,108 @@
+id: race-condition
+category: debugging
+difficulty: hard
+description: "Identify and fix a race condition in a concurrent counter"
+
+prompt: |
+  The following Python code has a race condition that causes incorrect
+  results when used with multiple threads. Identify and fix the bug.
+
+  ```python
+  import threading
+
+  class BankAccount:
+      def __init__(self, balance=0):
+          self.balance = balance
+
+      def deposit(self, amount):
+          current = self.balance
+          # Simulate some processing time
+          import time
+          time.sleep(0.001)
+          self.balance = current + amount
+
+      def withdraw(self, amount):
+          if self.balance >= amount:
+              current = self.balance
+              import time
+              time.sleep(0.001)
+              self.balance = current - amount
+              return True
+          return False
+
+      def get_balance(self):
+          return self.balance
+
+  # Usage that demonstrates the bug:
+  # account = BankAccount(1000)
+  # threads = []
+  # for _ in range(100):
+  #     t = threading.Thread(target=account.deposit, args=(10,))
+  #     threads.append(t)
+  #     t.start()
+  # for t in threads:
+  #     t.join()
+  # print(account.get_balance())  # Expected: 2000, but often less!
+  ```
+
+  Requirements:
+  1. Explain the race condition
+  2. Fix it using proper synchronization (threading.Lock)
+  3. Ensure the withdraw method is also thread-safe
+  4. The fix should not cause deadlocks
+  5. Provide the corrected code
+
+expected_output: |
+  The race condition occurs because deposit() reads balance, sleeps,
+  then writes balance - another thread can modify balance in between.
+  Fix: Use a threading.Lock to protect the read-modify-write sequence
+  in both deposit() and withdraw().
+
+test_cases:
+  - input: |
+      account = BankAccount(1000)
+      threads = []
+      for _ in range(100):
+          t = threading.Thread(target=account.deposit, args=(10,))
+          threads.append(t)
+          t.start()
+      for t in threads:
+          t.join()
+      result = account.get_balance()
+    expected_output: "2000 (exactly)"
+    description: "100 concurrent deposits of 10 each"
+
+  - input: |
+      account = BankAccount(1000)
+      threads = []
+      for _ in range(50):
+          t = threading.Thread(target=account.withdraw, args=(10,))
+          threads.append(t)
+          t.start()
+      for t in threads:
+          t.join()
+      result = account.get_balance()
+    expected_output: "500 (exactly)"
+    description: "50 concurrent withdrawals of 10 each"
+
+  - input: |
+      account = BankAccount(100)
+      threads = []
+      for _ in range(50):
+          t = threading.Thread(target=account.deposit, args=(5,))
+          threads.append(t)
+          t2 = threading.Thread(target=account.withdraw, args=(3,))
+          threads.append(t2)
+          t.start()
+          t2.start()
+      for t in threads:
+          t.join()
+      result = account.get_balance()
+    expected_output: "200 (100 + 50*5 - 50*3 = 200)"
+    description: "Mixed concurrent deposits and withdrawals"
+
+tags:
+  - debugging
+  - concurrency
+  - threading
+  - synchronization

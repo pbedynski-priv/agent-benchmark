@@ -1,0 +1,17 @@
+id: error-infinite-loop
+difficulty: hard
+description: Detect and fix infinite loops
+prompt: "This code is stuck in an infinite loop. Fix it:\nwhile True:\n    data =\
+  \ fetch_data()\n    if not data:\n        continue\n    process(data)"
+scenario: Infinite loop detected
+code: "while True:\n    data = fetch_data()\n    if not data:\n        continue\n\
+  \    process(data)"
+expected_output: Add break condition or timeout
+test_cases:
+- input: Loop fix
+  expected: break|timeout|max.*iteration
+  description: Break infinite loop
+tags:
+- error
+- loop
+category: hermes-error-recovery

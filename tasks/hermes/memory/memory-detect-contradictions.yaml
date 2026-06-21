@@ -1,0 +1,20 @@
+id: memory-detect-contradictions
+difficulty: hard
+description: Find contradictory statements
+prompt: 'Find contradictions:
+
+  User: I never use type hints
+
+  User: All my functions have type hints'
+context: 'User: I never use type hints
+
+  User: All my functions have type hints'
+expected_output: Contradiction about type hints usage
+test_cases:
+- input: Contradiction detection
+  expected: contradict|conflict|inconsistent
+  description: Find contradiction
+tags:
+- analysis
+- contradiction
+category: hermes-memory

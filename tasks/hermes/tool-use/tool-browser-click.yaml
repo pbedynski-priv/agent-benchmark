@@ -1,0 +1,14 @@
+id: tool-browser-click
+difficulty: medium
+description: Click element on page
+prompt: Click the 'Sign in' button
+expected_tool: browser_click
+expected_output: browser_click(ref='@e5')
+test_cases:
+- input: Click sign in
+  expected: browser_click.*ref
+  description: Element click
+tags:
+- browser
+- click
+category: hermes-tool-use

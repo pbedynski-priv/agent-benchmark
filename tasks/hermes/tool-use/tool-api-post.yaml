@@ -1,0 +1,16 @@
+id: tool-api-post
+difficulty: hard
+description: Make POST request with data
+prompt: 'Send a POST request to https://api.example.com/users with JSON data {"name":
+  "John"}'
+expected_tool: terminal
+expected_output: 'curl -X POST -H ''Content-Type: application/json'' -d ''{"name":
+  "John"}'' https://api.example.com/users'
+test_cases:
+- input: POST with JSON
+  expected: curl.*POST.*application/json
+  description: API POST
+tags:
+- api
+- post
+category: hermes-tool-use

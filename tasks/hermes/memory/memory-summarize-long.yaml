@@ -1,0 +1,18 @@
+id: memory-summarize-long
+difficulty: hard
+description: Summarize long conversation
+prompt: 'Summarize this 50-turn conversation in 3 sentences:
+
+  [Long conversation about building a web app with Flask, adding authentication, deploying
+  to Heroku, fixing bugs, adding tests]'
+context: '[Simulated 50-turn conversation about Flask web app development]'
+constraints:
+  max_sentences: 3
+test_cases:
+- input: Long summary
+  expected: \..*\..*\.
+  description: Concise summary
+tags:
+- summarization
+- long-context
+category: hermes-memory

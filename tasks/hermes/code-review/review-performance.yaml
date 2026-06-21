@@ -1,0 +1,18 @@
+id: review-performance
+difficulty: medium
+description: Find performance issues
+prompt: "Find performance problems:\ndef process_items(items):\n    result = []\n\
+  \    for item in items:\n        if item not in result:\n            result.append(item)\n\
+  \    return result"
+code: "def process_items(items):\n    result = []\n    for item in items:\n      \
+  \  if item not in result:\n            result.append(item)\n    return result"
+expected_issues:
+- "O(n\xB2) complexity, should use set"
+test_cases:
+- input: Performance review
+  expected: O\(n.*2\)|set|complexity|slow
+  description: Find performance issue
+tags:
+- review
+- performance
+category: hermes-code-review

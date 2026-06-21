@@ -1,0 +1,95 @@
+id: memory-leak
+category: debugging
+difficulty: medium
+description: "Identify and fix a memory leak in a caching system"
+
+prompt: |
+  The following Python code has a memory leak. The cache grows unboundedly
+  and never releases old entries. Identify and fix the memory leak.
+
+  ```python
+  import weakref
+
+  class DataProcessor:
+      def __init__(self):
+          self._cache = {}
+          self._callbacks = []
+
+      def process(self, data_id: str, data: bytes) -> bytes:
+          """Process data and cache the result."""
+          if data_id in self._cache:
+              return self._cache[data_id]
+
+          # Simulate expensive processing
+          result = self._expensive_transform(data)
+          self._cache[data_id] = result
+          return result
+
+      def register_callback(self, callback):
+          """Register a callback to be called after processing."""
+          self._callbacks.append(callback)
+
+      def _expensive_transform(self, data: bytes) -> bytes:
+          """Simulate expensive data transformation."""
+          return data[::-1]  # Reverse bytes as placeholder
+
+      def get_stats(self):
+          return {
+              "cache_size": len(self._cache),
+              "callback_count": len(self._callbacks),
+          }
+
+  # Usage that demonstrates the leak:
+  # processor = DataProcessor()
+  # for i in range(1000000):
+  #     processor.process(f"item_{i}", b"data")
+  #     processor.register_callback(lambda x: x)  # Leak: callbacks accumulate
+  # # Memory keeps growing - cache never evicts, callbacks never removed
+  ```
+
+  Requirements:
+  1. Identify all sources of memory leaks
+  2. Implement a bounded cache with LRU eviction
+  3. Fix the callback registration to use weak references where appropriate
+  4. Add a method to clear old cache entries
+  5. Provide the corrected code
+
+expected_output: |
+  Two memory leaks should be identified:
+  1. _cache grows unboundedly - fix with max size and LRU eviction
+  2. _callbacks accumulates references preventing garbage collection -
+     fix with weak references or explicit unregister method
+  The fix should maintain functionality while bounding memory usage.
+
+test_cases:
+  - input: |
+      processor = DataProcessor(max_cache_size=100)
+      for i in range(200):
+          processor.process(f"item_{i}", b"data")
+      stats = processor.get_stats()
+    expected_output: "cache_size <= 100 (bounded by max_cache_size)"
+    description: "Cache should be bounded"
+
+  - input: |
+      processor = DataProcessor(max_cache_size=10)
+      for i in range(10):
+          processor.process(f"item_{i}", f"data_{i}".encode())
+      result = processor.process("item_0", b"data_0")
+    expected_output: "b'0_atad' (cached result for item_0)"
+    description: "Cache hits still work"
+
+  - input: |
+      processor = DataProcessor(max_cache_size=3)
+      processor.process("a", b"1")
+      processor.process("b", b"2")
+      processor.process("c", b"3")
+      processor.process("d", b"4")  # Should evict "a"
+      result = "a" in processor._cache
+    expected_output: "False (item 'a' was evicted)"
+    description: "LRU eviction works"
+
+tags:
+  - debugging
+  - memory-management
+  - caching
+  - resource-leaks

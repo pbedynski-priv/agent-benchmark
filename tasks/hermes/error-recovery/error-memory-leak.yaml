@@ -1,0 +1,18 @@
+id: error-memory-leak
+difficulty: hard
+description: Identify memory issues
+prompt: "Application memory usage keeps growing. Identify potential causes in this\
+  \ code:\ncache = {}\ndef get_data(key):\n    if key not in cache:\n        cache[key]\
+  \ = fetch_large_dataset(key)\n    return cache[key]"
+scenario: Memory leak detected
+code: "cache = {}\ndef get_data(key):\n    if key not in cache:\n        cache[key]\
+  \ = fetch_large_dataset(key)\n    return cache[key]"
+expected_output: Unbounded cache growth, add LRU eviction or size limit
+test_cases:
+- input: Memory fix
+  expected: LRU|evict|limit|max.*size
+  description: Fix memory leak
+tags:
+- error
+- memory
+category: hermes-error-recovery

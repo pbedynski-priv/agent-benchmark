@@ -1,0 +1,20 @@
+id: review-improvements
+difficulty: medium
+description: Suggest code improvements
+prompt: "Suggest improvements:\ndef calc(x, y, op):\n    if op == '+': return x +\
+  \ y\n    if op == '-': return x - y\n    if op == '*': return x * y\n    if op ==\
+  \ '/': return x / y"
+code: "def calc(x, y, op):\n    if op == '+': return x + y\n    if op == '-': return\
+  \ x - y\n    if op == '*': return x * y\n    if op == '/': return x / y"
+expected_issues:
+- Use dictionary dispatch
+- Add error handling
+- Add type hints
+test_cases:
+- input: Improvement suggestions
+  expected: dictionary|dispatch|error|type.*hint
+  description: Suggest improvements
+tags:
+- review
+- improvements
+category: hermes-code-review

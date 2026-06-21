@@ -1,0 +1,19 @@
+id: memory-extract-environment
+difficulty: easy
+description: Extract environment details
+prompt: 'What environment is the user working in?
+
+  User: I''m on WSL2 with Ubuntu 22.04, using VS Code'
+context: 'User: I''m on WSL2 with Ubuntu 22.04, using VS Code'
+expected_output:
+- WSL2
+- Ubuntu 22.04
+- VS Code
+test_cases:
+- input: Environment extraction
+  expected: WSL2.*Ubuntu.*VS Code
+  description: Environment details
+tags:
+- extraction
+- environment
+category: hermes-memory

@@ -1,0 +1,15 @@
+id: instruction-format-constraint
+difficulty: medium
+description: Follow format constraints
+prompt: Explain what a decorator is in Python in exactly 100 words
+constraints:
+  max_words: 100
+  exact_words: 100
+test_cases:
+- input: Word count constraint
+  expected: \b\w+\b.*100
+  description: Exact word count
+tags:
+- constraint
+- format
+category: hermes-instruction

@@ -1,0 +1,14 @@
+id: tool-file-write
+difficulty: easy
+description: Create new file
+prompt: Create a new file called test.py with a hello world function
+expected_tool: write_file
+expected_output: write_file(path='test.py', content='def hello():\n    print("Hello")')
+test_cases:
+- input: Create test file
+  expected: write_file.*test.py
+  description: File write operation
+tags:
+- file
+- write
+category: hermes-tool-use

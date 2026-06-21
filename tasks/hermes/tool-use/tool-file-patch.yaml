@@ -1,0 +1,14 @@
+id: tool-file-patch
+difficulty: medium
+description: Edit specific lines in file
+prompt: Replace 'old_function' with 'new_function' in main.py
+expected_tool: patch
+expected_output: patch(path='main.py', old_string='old_function', new_string='new_function')
+test_cases:
+- input: Replace function name
+  expected: patch.*main.py.*old_function.*new_function
+  description: File patch operation
+tags:
+- file
+- patch
+category: hermes-tool-use

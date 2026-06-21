@@ -1,0 +1,13 @@
+id: instruction-json-format
+difficulty: medium
+description: Output valid JSON
+prompt: 'Return a JSON object with keys: name (string), age (number), active (boolean)'
+expected_format: json
+test_cases:
+- input: JSON output
+  expected: \{.*name.*age.*active.*\}
+  description: Valid JSON structure
+tags:
+- format
+- json
+category: hermes-instruction

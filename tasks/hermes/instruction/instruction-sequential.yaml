@@ -1,0 +1,13 @@
+id: instruction-sequential
+difficulty: hard
+description: Follow sequential steps
+prompt: First, create a directory called 'project'. Then, create __init__.py inside
+  it. Finally, create main.py with a main function.
+test_cases:
+- input: Sequential creation
+  expected: mkdir.*project.*__init__.py.*main.py
+  description: Ordered operations
+tags:
+- sequential
+- steps
+category: hermes-instruction

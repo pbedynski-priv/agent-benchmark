@@ -1,0 +1,19 @@
+id: error-runtime
+difficulty: medium
+description: Fix runtime exceptions
+prompt: 'Fix this runtime error:
+
+  TypeError: can only concatenate str (not "int") to str
+
+  Code: result = "Value: " + 42'
+scenario: 'TypeError: can only concatenate str'
+code: 'result = "Value: " + 42'
+expected_output: 'result = "Value: " + str(42)'
+test_cases:
+- input: Runtime fix
+  expected: str\(42\)|f-string|format
+  description: Type conversion
+tags:
+- error
+- runtime
+category: hermes-error-recovery

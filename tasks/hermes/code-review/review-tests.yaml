@@ -1,0 +1,19 @@
+id: review-tests
+difficulty: medium
+description: Check test coverage
+prompt: "What test cases are missing for this function?\ndef is_palindrome(s):\n \
+  \   return s == s[::-1]"
+code: "def is_palindrome(s):\n    return s == s[::-1]"
+expected_issues:
+- Empty string
+- Single character
+- Case sensitivity
+- Non-alphanumeric characters
+test_cases:
+- input: Test coverage
+  expected: empty|single|case|edge|boundary
+  description: Missing tests
+tags:
+- review
+- tests
+category: hermes-code-review

@@ -1,0 +1,13 @@
+id: instruction-priority
+difficulty: hard
+description: Prioritize information
+prompt: List the 5 most important Python best practices, ordered from most to least
+  important
+test_cases:
+- input: Priority ordering
+  expected: 1\..*2\..*3\..*4\..*5\.
+  description: Numbered priority list
+tags:
+- priority
+- ordering
+category: hermes-instruction

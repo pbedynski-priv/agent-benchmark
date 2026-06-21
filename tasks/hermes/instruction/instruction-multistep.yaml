@@ -1,0 +1,22 @@
+id: instruction-multistep
+difficulty: hard
+description: Follow multi-step workflow
+prompt: '1. Create a file called calculator.py
+
+  2. Write an add function
+
+  3. Add type hints
+
+  4. Include docstrings
+
+  5. Add 3 test cases'
+expected_output: create file, write function, add type hints, add docstrings, add
+  tests
+test_cases:
+- input: Multi-step task
+  expected: calculator.py.*add.*def.*->.*int
+  description: Complete workflow
+tags:
+- multistep
+- workflow
+category: hermes-instruction

@@ -1,0 +1,17 @@
+id: review-best-practices
+difficulty: medium
+description: Check Python best practices
+prompt: "Check best practices:\ndata = []\nfor i in range(100):\n    data.append(i\
+  \ * 2)"
+code: "data = []\nfor i in range(100):\n    data.append(i * 2)"
+expected_issues:
+- Should use list comprehension
+- Magic number 100
+test_cases:
+- input: Best practices
+  expected: comprehension|list.*comp|magic.*number|constant
+  description: Best practice issues
+tags:
+- review
+- best-practices
+category: hermes-code-review

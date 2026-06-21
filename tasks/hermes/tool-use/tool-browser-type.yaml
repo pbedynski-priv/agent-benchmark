@@ -1,0 +1,14 @@
+id: tool-browser-type
+difficulty: medium
+description: Type text in form field
+prompt: Type 'admin' in the username field
+expected_tool: browser_type
+expected_output: browser_type(ref='@e3', text='admin')
+test_cases:
+- input: Type username
+  expected: browser_type.*text.*admin
+  description: Form input
+tags:
+- browser
+- type
+category: hermes-tool-use

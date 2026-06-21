@@ -1,0 +1,17 @@
+id: review-style
+difficulty: easy
+description: Check PEP 8 compliance
+prompt: "Check style issues:\ndef MyFunction( x,y ):\n    z=x+y\n    return z"
+code: "def MyFunction( x,y ):\n    z=x+y\n    return z"
+expected_issues:
+- Function name should be lowercase
+- Missing spaces around operators
+- Unused variable name
+test_cases:
+- input: Style check
+  expected: PEP.*8|lowercase|space|naming
+  description: Style issues
+tags:
+- review
+- style
+category: hermes-code-review

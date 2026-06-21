@@ -1,0 +1,14 @@
+id: tool-browser-navigate
+difficulty: easy
+description: Navigate to URL
+prompt: Go to https://github.com
+expected_tool: browser_navigate
+expected_output: browser_navigate(url='https://github.com')
+test_cases:
+- input: Navigate to GitHub
+  expected: browser_navigate.*github.com
+  description: Browser navigation
+tags:
+- browser
+- navigate
+category: hermes-tool-use

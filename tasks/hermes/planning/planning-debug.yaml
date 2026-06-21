@@ -1,0 +1,18 @@
+id: planning-debug
+difficulty: medium
+description: Plan debugging approach
+prompt: The API is returning 500 errors intermittently. Plan your debugging approach.
+expected_steps:
+- check logs
+- reproduce error
+- identify pattern
+- check dependencies
+- test fixes
+test_cases:
+- input: Debug plan
+  expected: log.*reproduce.*pattern.*fix
+  description: Debugging strategy
+tags:
+- planning
+- debugging
+category: hermes-planning

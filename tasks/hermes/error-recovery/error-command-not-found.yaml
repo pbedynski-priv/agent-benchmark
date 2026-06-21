@@ -1,0 +1,14 @@
+id: error-command-not-found
+difficulty: easy
+description: Handle missing command
+prompt: 'Command failed: ''jq: command not found''. How do you proceed?'
+scenario: 'jq: command not found'
+expected_output: Install jq or use alternative like python -m json.tool
+test_cases:
+- input: Missing command
+  expected: install|alternative|python.*json
+  description: Recovery strategy
+tags:
+- error
+- command
+category: hermes-error-recovery
