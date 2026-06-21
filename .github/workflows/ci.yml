@@ -67,11 +67,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install safety bandit
+          pip install bandit pip-audit
 
       - name: Check dependencies for vulnerabilities
         run: |
-          safety scan || echo "No vulnerabilities found or safety scan not available"
+          pip-audit --require-hashes=false || true
 
       - name: Run bandit security scan
         run: |
