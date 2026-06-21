@@ -79,7 +79,7 @@ def run(
             project_root=output_dir.parent,
         )
 
-    console.print(f"[bold blue]Starting benchmark run[/bold blue]")
+    console.print("[bold blue]Starting benchmark run[/bold blue]")
     console.print(f"  Models: {', '.join(model_list)}")
     if tasks_filter:
         console.print(f"  Tasks: {tasks_filter}")

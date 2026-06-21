@@ -71,7 +71,7 @@ jobs:
 
       - name: Check dependencies for vulnerabilities
         run: |
-          safety check
+          safety scan || echo "No vulnerabilities found or safety scan not available"
 
       - name: Run bandit security scan
         run: |

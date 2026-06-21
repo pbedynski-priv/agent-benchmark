@@ -4,8 +4,6 @@ Supports multiple output formats: Rich tables, JSON, and Markdown.
 """
 
 import json
-from datetime import datetime
-from pathlib import Path
 from typing import Any
 
 from rich.console import Console
